@@ -11,7 +11,7 @@ jobs:
 
     env:
       GH_TOKEN: ${{ github.token }}
-      PKG_NAMES: aria2 axel autotools-setup bash bat bison bmake bzip2 b3sum cargo-c cmake coreutils cppcheck ctop curlie curl darkhttpd diffutils dos2unix doxygen ed file findutils flex fzf gawk gping git glow gm4 gmake gnupg gnuplot gh gn gogs gotop gotty gperf grex grep gsed gtar gzip helm hyperfine hugo jq joshuto lazygit libarchive lzip lz4 mediainfo mosh mpg123 nasm ninja nushell openssl patchelf patch pkgconf pkg-config pngquant proot putty pigz qpdf quickjs ripgrep rsync rtmpdump sqlite starship strace tcpdump tealdeer tig timg tmux tree uctags unrar unzip uppm util-linux volta wget xmake xxd xz yasm youtubedr yq zopfli zip p7zip zstd zoxide base16 base64 sysinfo easyutils gettext-tools glib-tools grpc-plugins xsltproc libxml2-utils smake cdrtools procps
+      PKG_NAMES: aria2 axel autotools-setup bash bat bison bmake bzip2 b3sum cargo-c cmake coreutils cppcheck ctop curlie curl darkhttpd diffutils dos2unix doxygen ed file findutils flex fzf gawk gping git glow gm4 gmake gnupg gnuplot gh gn gogs gotop gotty gperf grex grep gsed gtar gzip helm hyperfine hugo jq joshuto lazygit libarchive lzip lz4 mediainfo mosh mpg123 nasm ninja nushell openssl patchelf patch pkgconf pkg-config pngquant proot putty pigz qpdf quickjs ripgrep rsync rtmpdump sqlite starship strace tcpdump tealdeer tig timg tmux tree uctags unrar unzip uppm util-linux volta wget xmake xxd xz yasm youtubedr yq zopfli zip p7zip zstd zoxide base16 base64 sysinfo easyutils gettext-tools glib-tools xsltproc libxml2-utils smake cdrtools procps
 
     steps:
       - run: apt -y update
