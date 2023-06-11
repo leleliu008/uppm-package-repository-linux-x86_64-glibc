@@ -22,38 +22,23 @@ jobs:
       - run: ./ppkg setup
       - run: ./ppkg update
       - run: ./ppkg install $PKG_NAMES --link-type=static-prefered --install-lib=static
-
       - run: |
-          for PKG_NAME in $PKG_NAMES
+          for PACKAGE_NAME in $(./ppkg ls-installed)
           do
-            if [     -d ~/.ppkg/installed/$PKG_NAME/bin ] || [ -d ~/.ppkg/installed/$PKG_NAME/sbin ] ; then
-                if [ -d ~/.ppkg/installed/$PKG_NAME/include ] ; then
-                    rm -rf               ~/.ppkg/installed/$PKG_NAME/include
-                    sed -i '/|include/d' ~/.ppkg/installed/$PKG_NAME/.ppkg/manifest.txt
-                fi
-
-                if [ -d ~/.ppkg/installed/$PKG_NAME/lib ] ; then
-                    rm -rf           ~/.ppkg/installed/$PKG_NAME/lib
-                    sed -i '/|lib/d' ~/.ppkg/installed/$PKG_NAME/.ppkg/manifest.txt
-                fi
-
-               ./ppkg pack $PKG_NAME
-            fi
+            ./ppkg pack $PACKAGE_NAME -o .
           done
 
       - run: |
-          cd ~/.ppkg/packed
-
           date +%Y.%m.%d > ts.txt
 
           TAGNAME="$(cat ts.txt)"
 
-          UPPM_FORMULA_ROOT_DIR="uppm-formula-repository-linux-x86_64-$TAGNAME"
+          UPPM_FORMULA_ROOT_DIR="uppm-formula-repository-linux-x86_64-glibc-$TAGNAME"
           UPPM_FORMULA_DIR="$UPPM_FORMULA_ROOT_DIR/formula"
 
           install -d "$UPPM_FORMULA_DIR"
 
-          for PACKAGE_NAME in $PKG_NAMES
+          for PACKAGE_NAME in $(./ppkg ls-installed)
           do
               RECEIPT_FILEPATH="${HOME}/.ppkg/installed/${PACKAGE_NAME}/.ppkg/receipt.yml"
 
