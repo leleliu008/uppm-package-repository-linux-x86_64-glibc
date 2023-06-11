@@ -17,9 +17,9 @@ jobs:
       - run: apt -y update
       - run: apt -y install curl xz-utils g++ gfortran linux-headers-generic
 
-      - run: curl -LO https://raw.githubusercontent.com/leleliu008/ppkg/master/bin/ppkg
+      - run: curl -LO https://raw.githubusercontent.com/leleliu008/ppkg/master/ppkg
       - run: chmod a+x ppkg
-      - run: PPKG_XTRACE=1 ./ppkg setup
+      - run: ./ppkg setup
       - run: ./ppkg update
       - run: ./ppkg install $PKG_NAMES --link-type=static-prefered --install-lib=static
       - run: |
